@@ -1,0 +1,26 @@
+                                
+public class Main{
+     static boolean isArmstrong(int num){
+        int original=num;
+        int sum=0;
+     
+     while(num>0){
+         int digit=num%10;
+         sum+=digit*digit*digit;
+         num/=10;
+     }
+     return sum==original;
+     }
+
+public static void main(String[] args){
+    int number=153;
+    if(isArmstrong(number)){
+        System.out.println("It is an armstrong:"+number);
+    }
+    else{
+        System.out.println("It is not armstrong:"+number);
+    }
+}
+}
+
+It is an armstrong:153
