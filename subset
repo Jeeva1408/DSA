@@ -1,0 +1,23 @@
+import java.util.*;
+class Solution {
+public static void SubsetSum(int index, int sum, ArrayList arr, int n, ArrayList SumSubset) {
+if (index == n) {
+SumSubset.add(sum);
+return;
+}
+SubsetSum(index + 1, sum + arr.get(index), arr, n, SumSubset);
+SubsetSum(index + 1, sum, arr, n, SumSubset);
+}
+
+public static void main(String[] args) {
+    ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(5, 2, 1));
+    ArrayList<Integer> SumSubset = new ArrayList<>();
+    SubsetSum(0, 0, arr, arr.size(), SumSubset);
+    Collections.sort(SumSubset);
+    System.out.println(SumSubset);
+}
+}
+
+Output:
+[0, 1, 2, 3, 5, 6, 7, 8]
+
