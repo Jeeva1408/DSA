@@ -1,0 +1,39 @@
+class Solution 
+{ 
+    boolean check(int N, int M, ArrayList<ArrayList<Integer>> Edges) 
+    { 
+        List<List<Integer>> list=new ArrayList<>();
+        for(int i=0;i<=N;i++){
+            list.add(new ArrayList<>());
+        }
+        for(ArrayList<Integer> i:Edges){
+            list.get(i.get(0)).add(i.get(1));
+            list.get(i.get(1)).add(i.get(0));
+        }
+        for(int i=1;i<=N;i++){
+            Set<Integer> vis=new HashSet<>();
+            if(!vis.contains(i)){
+                if(dfs(i,N,list,vis)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    boolean dfs(int src,int total,List<List<Integer>> list,Set<Integer> vis){
+       
+        vis.add(src);
+        if(vis.size()==total){
+            return true;
+        }
+        for(Integer nbr:list.get(src)){
+            if(!vis.contains(nbr)){
+                if(dfs(nbr,total,list,vis)) return true;
+            }
+        }
+        vis.remove(src);
+        return false;
+    }
+}
+
+
